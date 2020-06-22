@@ -1,6 +1,9 @@
 <template>
     <div class="bg-gray-200 w-full h-screen flex flex-col items-center p-4">
-        <Card name="Erhan Arda" company="YCP"></Card>
+        <Card name="Erhan Arda" company="YCP"/>
+
+        <Props title="Title for my Props" :is-published="false" :views="123" :post="post"/>
+
         <div>
             <input
             type="text"
@@ -18,13 +21,20 @@
 <script>
 import Lists from './Lists'
 import Card from './Card'
+import Props from './Props'
 
 export default {
     name:'two',
-    components:{ Lists,Card },
+    components:{ Lists,Card,Props},
     data:()=>({
         item:'',
-        items: ['item1', 'item2']    }),
+        items: ['item1', 'item2'],
+         post:{
+             id:1,
+             title:'Post title'
+         } 
+       }),
+       
     methods:{
         addItem: function(){
             this.items.push(this.item)
@@ -35,9 +45,6 @@ export default {
 }
 </script>
 <style scoped>
-    .wrapper{
-        background: blue;
-    }
     
 input {
     padding: 5px 15px;
