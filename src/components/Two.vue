@@ -1,6 +1,6 @@
 <template>
     <div class="bg-gray-200 w-full h-screen flex flex-col items-center p-4">
-        <Card></Card>
+        <Card name="Erhan Arda" company="YCP"></Card>
         <div>
             <input
             type="text"

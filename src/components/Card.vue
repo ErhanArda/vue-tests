@@ -3,10 +3,10 @@
             <div class="card-title">Computer Engineer</div>
             <UserCircle :name="name"/>
             <div class="card-name">
-                <div class="light-font">ERHAN</div>
-                <div>ARDA</div>
+                <div class="light-font">{{ splitName[0] }}</div>
+                <div>{{ splitName[1] }}</div>
             </div>
-            <div class="card-company">YCP</div>
+            <div class="card-company">{{company}}</div>
         </div>
 </template>
 
@@ -14,8 +14,17 @@
 import UserCircle from './UserCircle'
 
 export default {
-    data: ()=>{
-        return {name:'Erhan Arda'}
+    // data: ()=>{
+    //     return {
+    //         name:'Erhan Arda',
+    //         company:'YCP'
+    //         }
+    // },
+    props:['name','company'],
+    computed: {
+        splitName: function() {
+            return this.name.split(' ')
+        }
     },
     components: {UserCircle}
 }
