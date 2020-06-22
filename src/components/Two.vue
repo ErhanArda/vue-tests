@@ -2,7 +2,9 @@
     <div class="bg-gray-200 w-full h-screen flex flex-col items-center p-4">
         <Card name="Erhan Arda" company="YCP"/>
 
-        <Props title="Title for my Props" :is-published="false" :views="123" :post="post"/>
+        <!-- <Props :is-published="false" :views="123" :id="post.id" :title="post.title"/> -->
+
+        <Props :is-published="true" :views="123" v-bind="post"/>
 
         <div>
             <input
