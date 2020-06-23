@@ -1,34 +1,45 @@
 <template>
-    <div class="bg-gray-200 w-full h-screen flex flex-col items-center p-4">
-        <Card name="Erhan Arda" company="YCP"/>
+    <div class="bg-gray-200 w-full h-screen flex p-12">
+        <div class="flex-initial text-gray-700 text-center  px-4 py-2 m-2">
+            <Card name="Erhan Arda" company="YCP"/>  
+        </div>
+
+<div class="flex-initial wrap text-gray-700 text-center px-4 py-2 m-2">
+            <input
+            type="text"
+            placeholder="Add an item"
+            v-model="item"
+        />
+        <button  :disabled="!item" v-on:click.prevent="addItem">Add</button>
+        </div>
+        <div>
+            <lists :items="items" v-on:remove-item ="removeItem"></lists>
+        </div>
+
+
 
         <!-- <Props :is-published="false" :views="123" :id="post.id" :title="post.title"/> -->
 
-        <Props :is-published="true" :views="123" v-bind="post"/>
+        <!-- <Props :is-published="true" :views="123" v-bind="post"/>
 
         <div id="app" v-on:keyup.esc="globalPage = false" v-if="globalPage">
-            <!-- Example 1 - using javascript expression -->
-            <!-- When the button is clicked, it should increase exampleOne by 12 -->
+            
+            
             <button v-on:click="exampleOne += 12">Example 1</button>
             <div>{{ exampleOne }}</div>
             
-            <!-- Example 2 - using a method -->
-            <!-- When the button is clicked, it should increase exampleTwo by 2 -->
+            
             <button v-on:click="addTwo" >Example 2</button>
             <div>{{ exampleTwo }}</div>
             
-            <!-- Example 3 - using a method with data -->
-            <!-- When the button is clicked, it should set exampleThree to data being passed in -->
+            
             <button v-on:click="setV('hello')">Example 3</button>
             <div>{{ exampleThree }}</div>
-            
-            <!-- Example 4 - using a method -->
-            <!-- When the word "Show" is double clicked (dbclick), it should make the text appear! -->
+        
             <button v-on:dblclick="appear">Show</button>
             <div v-if="show">Abracadabra</div>
             
-            <!-- Example 5 - using a method -->
-            <!-- When the key esc is pressed, the whole page should disappear -->
+        
             
         </div>
         <div>
@@ -36,30 +47,20 @@
                     <div v-if="data">
                         {{ data.id }}  {{ data.field }}
                     </div>
-        </div>
-        <div>
-            <input
-            type="text"
-            placeholder="Add an item"
-            v-model="item"
-        />
-        <button :disabled="!item" v-on:click.prevent="addItem">Add</button>
-        </div>
-        <div>
-            <lists :items="items" v-on:remove-item ="removeItem"></lists>
-        </div>
+        </div> -->
+        
 
     </div>
 </template>
 <script>
 import Lists from './Lists'
 import Card from './Card'
-import Props from './Props'
-import MyButton from './Button'
+// import Props from './Props'
+// import MyButton from './Button'
 
 export default {
     name:'two',
-    components:{ Lists,Card,Props,MyButton},
+    components:{ Lists,Card},
     data:()=>({
         item:'',
         exampleOne: 0,
