@@ -31,10 +31,12 @@
             <!-- When the key esc is pressed, the whole page should disappear -->
             
         </div>
-        <!-- <div>
-            <button v-on:keyup.esc="addTen(10)">Add 10</button>
-                        {{count}}
-        </div> -->
+        <div>
+            <my-button v-on:my-custom-event="handleMyButton" ></my-button>
+                    <div v-if="data">
+                        {{ data.id }}  {{ data.field }}
+                    </div>
+        </div>
         <div>
             <input
             type="text"
@@ -53,10 +55,11 @@
 import Lists from './Lists'
 import Card from './Card'
 import Props from './Props'
+import MyButton from './Button'
 
 export default {
     name:'two',
-    components:{ Lists,Card,Props},
+    components:{ Lists,Card,Props,MyButton},
     data:()=>({
         item:'',
         exampleOne: 0,
@@ -64,6 +67,7 @@ export default {
         exampleThree:'',
         show:false,
         globalPage: true,
+        data:'',
         items: ['item1', 'item2'],
         post:{
             id:1,
@@ -89,6 +93,9 @@ export default {
         removeItem: function(itemKey){
             this.items.splice(itemKey,1)
             console.log("remove")
+        },
+        handleMyButton: function(data){
+            this.data = data
         }
     }
 }
