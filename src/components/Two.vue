@@ -44,7 +44,7 @@
         <button :disabled="!item" v-on:click.prevent="addItem">Add</button>
         </div>
         <div>
-            <lists :items="items"></lists>
+            <lists :items="items" v-on:remove-item ="removeItem"></lists>
         </div>
 
     </div>
@@ -85,12 +85,16 @@ export default {
         },
         appear: function(){
             this.show = true
+        },
+        removeItem: function(itemKey){
+            this.items.splice(itemKey,1)
+            console.log("remove")
         }
     }
 }
 </script>
 <style scoped>
-    
+
 input {
     padding: 5px 15px;
     border-radius: 15px;

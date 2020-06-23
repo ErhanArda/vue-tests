@@ -1,8 +1,12 @@
 <template>
     <ul>
-        <li v-for="item in items" :key="item">
-            {{ item }}
+        <li v-for="(item,key) in items" :key="key">
+            <div>
+                {{ item }}
+            </div>
+            <button v-on:click="$emit('remove-item',key)">X</button>
         </li>
+        
     </ul>
 </template>
 <script>
@@ -11,7 +15,16 @@ export default {
 }
 </script>
 <style>
-
+input {
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+button {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: bold;
+}
 ul {
     margin-top: 15px;
 }
