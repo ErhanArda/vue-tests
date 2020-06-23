@@ -6,6 +6,35 @@
 
         <Props :is-published="true" :views="123" v-bind="post"/>
 
+        <div id="app" v-on:keyup.esc="globalPage = false" v-if="globalPage">
+            <!-- Example 1 - using javascript expression -->
+            <!-- When the button is clicked, it should increase exampleOne by 12 -->
+            <button v-on:click="exampleOne += 12">Example 1</button>
+            <div>{{ exampleOne }}</div>
+            
+            <!-- Example 2 - using a method -->
+            <!-- When the button is clicked, it should increase exampleTwo by 2 -->
+            <button v-on:click="addTwo" >Example 2</button>
+            <div>{{ exampleTwo }}</div>
+            
+            <!-- Example 3 - using a method with data -->
+            <!-- When the button is clicked, it should set exampleThree to data being passed in -->
+            <button v-on:click="setV('hello')">Example 3</button>
+            <div>{{ exampleThree }}</div>
+            
+            <!-- Example 4 - using a method -->
+            <!-- When the word "Show" is double clicked (dbclick), it should make the text appear! -->
+            <button v-on:dblclick="appear">Show</button>
+            <div v-if="show">Abracadabra</div>
+            
+            <!-- Example 5 - using a method -->
+            <!-- When the key esc is pressed, the whole page should disappear -->
+            
+        </div>
+        <!-- <div>
+            <button v-on:keyup.esc="addTen(10)">Add 10</button>
+                        {{count}}
+        </div> -->
         <div>
             <input
             type="text"
@@ -30,18 +59,32 @@ export default {
     components:{ Lists,Card,Props},
     data:()=>({
         item:'',
+        exampleOne: 0,
+        exampleTwo: 0,
+        exampleThree:'',
+        show:false,
+        globalPage: true,
         items: ['item1', 'item2'],
-         post:{
-             id:1,
-             title:'Post title'
-         } 
-       }),
-       
+        post:{
+            id:1,
+            title:'Post title'
+        } 
+        }),
+    
     methods:{
         addItem: function(){
             this.items.push(this.item)
             // this.items.unshift(this.item)
             this.item=''
+        },
+        addTwo: function(){
+            this.exampleTwo +=2
+        },
+        setV: function(value){
+            this.exampleThree = value
+        },
+        appear: function(){
+            this.show = true
         }
     }
 }
