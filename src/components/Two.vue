@@ -16,8 +16,10 @@
             <lists :items="items" v-on:remove-item ="removeItem"></lists>
         </div>
 
-
-
+    <div class="flex-initial wrap text-gray-700 text-center px-4 py-2 m-2">
+         <component-a></component-a>
+         <component-b></component-b>
+    </div>
         <!-- <Props :is-published="false" :views="123" :id="post.id" :title="post.title"/> -->
 
         <!-- <Props :is-published="true" :views="123" v-bind="post"/>
@@ -57,10 +59,12 @@ import Lists from './Lists'
 import Card from './Card'
 // import Props from './Props'
 // import MyButton from './Button'
+import ComponentA from './ComponentA'
+import ComponentB from './ComponentB'
 
 export default {
     name:'two',
-    components:{ Lists,Card},
+    components:{ Lists,Card,ComponentA,ComponentB},
     data:()=>({
         item:'',
         exampleOne: 0,
